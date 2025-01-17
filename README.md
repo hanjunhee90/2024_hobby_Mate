@@ -1,5 +1,7 @@
 ﻿# 프로젝트 소개
 
+![2](https://github.com/user-attachments/assets/8f7df6d2-548c-4b3c-bb6d-7a607bb7736a)
+
 ## **프로젝트명:** Hobby Mate 플랫폼 개발
 
 ## 프로젝트 진행 절차
