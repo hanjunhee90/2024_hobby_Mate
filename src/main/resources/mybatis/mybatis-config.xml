@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+	  <!-- Oracle 테이블의 컬럼이 mem_id 이고, DTO의 필드변수가 memId 일때 매칭이 가능하게 하는 옵션 -->
+	  <setting name="mapUnderscoreToCamelCase" value="true"/> 
+	  <!-- null -->
+	  <setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.hobby.my.member.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.hobby.my.member.vo.HobbyVO" alias="HobbyVO"/>
+		<typeAlias type="com.hobby.my.member.vo.MbtiVO" alias="MbtiVO"/>
+		<typeAlias type="com.hobby.my.board.vo.BoardVO" alias="BoardVO"/>
+		<typeAlias type="com.hobby.my.board.vo.LikeVO" alias="LikeVO"/>
+		<typeAlias type="com.hobby.my.board.vo.CommentVO" alias="CommentVO"/>
+		
+		
+		<typeAlias type="com.hobby.my.board.vo.SearchVO" alias="SearchVO"/>
+		<typeAlias type="com.hobby.my.board.vo.CategoryVO" alias="CategoryVO"/>
+		
+		
+		<typeAlias type="com.hobby.my.recommend.vo.CulturalVO" alias="CulturalVO"/>
+		<typeAlias type="com.hobby.my.weather.vo.CityVO" alias="CityVO"/>
+		<typeAlias type="com.hobby.my.recommend.vo.ActivityVO" alias="ActivityVO"/>
+		<typeAlias type="com.hobby.my.recommend.vo.LocalClubVO" alias="LocalClubVO"/>
+		<typeAlias type="com.hobby.my.recommend.vo.SportInfoVO" alias="SportInfoVO"/>
+	</typeAliases>
+	
+</configuration>

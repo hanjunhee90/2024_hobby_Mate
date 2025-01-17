@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hobby.my.member.dao.IMemberDAO">
+	<!--  IMemberDAO 의 매개변수와 맞춰줘야함 memvervo의 memId 임, 데이터베이스의 mem_id가 아니라 -->
+	
+	<select id="checkId" parameterType="String" resultType="int">
+	
+		SELECT count(*) FROM member
+		WHERE mem_id = #{memId}
+	
+	</select>
+	
+	<insert id="registMember" parameterType="MemberVO">
+		INSERT INTO member (
+			mem_id
+		  , mem_pw
+		  , mem_nic
+		  , mem_job
+		  , mem_mbti
+		  , mem_birth
+		  , mem_gender
+		  , mem_hob
+		  , profile_img
+		  , use_yn
+		  , update_dt
+		  , create_dt)
+		VALUES (
+			  #{memId}
+			, #{memPw}
+			, #{memNic}
+			, #{memJob}
+			, #{memMbti}
+			, #{memBirth}
+			, #{memGender}
+			, #{memHob}
+			, #{profileImg}
+			, 'Y'
+			, SYSDATE
+			, SYSDATE
+		 )
+	
+	</insert>
+	
+	<!-- <insert id="insertHobby" parameterType="HobbyVO">
+    	INSERT INTO hobby (hobby_id, hobby_name) 
+    	VALUES (hobby_seq.NEXTVAL, #{hobbyName})
+	</insert> -->
+	
+<!-- 	<insert id="insertMemberHobby" parameterType="map">
+		
+		INSERT INTO member_hobby (
+        		    mem_id 
+        		  , hobby_id )
+    	VALUES (
+        #{memId}, #{hobbyId}
+    	)
+	</insert> -->
+	
+	<!-- 마지막 hobbyseq 불러오기 -->
+<!-- 	<select id="getLastInsertedHobbyId" resultType="int">
+    	SELECT hobby_seq.CURRVAL FROM dual
+	</select> -->
+
+	<select id="loginMember" resultType="MemberVO" parameterType="MemberVO">
+	
+		SELECT mem_id
+		  	 , mem_pw
+		  	 , mem_nic
+		  	 , mem_job
+		  	 , mem_mbti
+		  	 , mem_birth
+		  	 , mem_gender
+		  	 , mem_hob
+		  	 , profile_img
+		FROM member
+		WHERE mem_id = #{memId}
+		AND mem_pw =#{memPw}
+		AND use_yn = 'Y'
+	
+	</select>
+	
+    <select id="mbtiList" resultType="MbtiVO">
+        SELECT mbti_code
+        	 , mbti_keywords
+             , mbti_description
+        FROM mbti
+    </select>
+    
+    <update id="updateMember" parameterType="MemberVO">
+	    UPDATE MEMBER
+	    SET mem_nic = #{memNic},
+	        mem_job = #{memJob},
+	        mem_mbti = #{memMbti},
+	        mem_hob = #{memHob},
+	        profile_img = #{profileImg}
+	    WHERE mem_id = #{memId}
+</update>
+	
+</mapper>

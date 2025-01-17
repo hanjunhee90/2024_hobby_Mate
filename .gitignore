@@ -1,0 +1,58 @@
+# 기본적인 IntelliJ IDEA 설정 파일
+.idea/
+*.iml
+*.iws
+out/
+
+# 기본적인 Eclipse 설정 파일
+.project
+.classpath
+.settings/
+target/
+
+# Maven 빌드 산출물
+*.log
+*.war
+*.ear
+*.jar
+
+# Node.js 모듈 (사용 중이라면)
+node_modules/
+
+# Gradle Wrapper
+.gradle/
+build/
+
+# 환경 설정 파일
+*.env
+*.properties
+*.yml
+*.yaml
+
+# 운영 체제에서 생성된 파일
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+
+# 로그 파일
+*.log
+*.pid
+
+# 임시 파일
+*.tmp
+*.temp
+
+# IntelliJ의 특정 파일 (Windows/Linux의 경우 추가 가능)
+.idea/workspace.xml
+.idea/libraries/
+
+# Java 특정 파일
+*.class
+
+# Lombok 설정
+lombok.config
+
+# 스프링 부트의 기본 실행 파일
+*.jar.original

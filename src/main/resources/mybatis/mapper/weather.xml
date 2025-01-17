@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hobby.my.weather.dao.IWeatherDAO">
+
+	<select id="transCity" parameterType="String" resultType="String">
+		SELECT korean_name 
+		FROM city_translation 
+		WHERE english_name = #{englishName}
+	</select>
+	
+	<select id="searchSportsInfoByLocation" resultType="SportInfoVO" parameterType="String" >
+	    SELECT poi_nm, cl_nm, ctprvn_nm, cl_nm, signgu_nm, lc_lo, lc_la
+	    FROM sports_info
+	    WHERE ctprvn_nm LIKE '%' || #{koreanName} || '%'
+	</select>
+	
+	<select id="searchCulturalClassDataByLocation" resultType="CulturalVO" parameterType="String">
+	    SELECT class_title, category3, class_fee, address, class_curriculum
+	    FROM cultural_class_data
+	    WHERE address LIKE '%' || #{koreanName} || '%'
+	</select>
+	
+	<select id="searchActivityByLocation" resultType="ActivityVO" parameterType="String">
+	    SELECT fclty_nm, ctgry_three_nm, signgu_nm, lc_la, lc_lo
+	    FROM activity
+	    WHERE ctprvn_nm LIKE '%' || #{koreanName} || '%'
+	</select>
+	
+	<select id="searchLocalClubByLocation" resultType="LocalClubVO" parameterType="String">
+	    SELECT club_nm, signgu_nm, item_nm
+	    FROM local_club
+	    WHERE signgu_nm LIKE '%' || #{koreanName} || '%'
+	</select>
+	
+	
+	
+</mapper>

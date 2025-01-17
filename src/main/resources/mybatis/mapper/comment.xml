@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hobby.my.board.dao.ICommentDAO">
+
+	 <!-- 게시글에 달린 댓글 조회 -->
+    <select id="getCommentsByBoardId" parameterType="int" resultType="CommentVO">
+        SELECT comment_id, bo_no, mem_id, content, TO_CHAR(reg_date, 'YYYY-MM-DD HH24:MI:SS') AS reg_date
+        FROM COMMENTS
+        WHERE bo_no = #{boNo}
+        ORDER BY reg_date ASC
+    </select>
+
+    <insert id="insertComment" parameterType="CommentVO">
+	    <selectKey keyProperty="commentId" resultType="int" order="BEFORE">
+	        SELECT seq_comments.NEXTVAL FROM dual
+	    </selectKey>
+	    INSERT INTO COMMENTS (comment_id, bo_no, mem_id, content, reg_date)
+	    VALUES (#{commentId}, #{boNo}, #{memId}, #{content}, SYSDATE)
+	</insert>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM COMMENTS WHERE comment_id = #{commentId}
+    </delete>
+    
+    <select id="getCommentById" resultType="CommentVO" parameterType="int">
+		SELECT  comment_id, bo_no, mem_id, content, reg_date
+		FROM COMMENTS
+		WHERE comment_id = #{commentid}
+    </select>
+	
+</mapper>
